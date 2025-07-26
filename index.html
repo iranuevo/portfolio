@@ -3,94 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ira Kenner Anonuevo - Microservices Developer</title>
-    <meta name="description" content="Senior Java & .NET Developer specializing in microservices architecture for government banking systems">
+    <title>Ira Kenner Añonuevo - Senior Software Developer</title>
+    <meta name="description" content="Senior Software Developer with 9+ years in banking systems, microservices, and full-stack development">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
             --primary: #0066ff;
             --primary-dark: #0052cc;
-            --secondary: #00d4ff;
-            --accent: #7c3aed;
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #1a1a1a;
-            --bg-card: #262626;
-            --text-primary: #ffffff;
-            --text-secondary: #a3a3a3;
-            --text-muted: #737373;
-            --border: #404040;
-            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
-            --shadow: 0 10px 40px rgba(0, 102, 255, 0.15);
+            --text-primary: #1a1a1a;
+            --text-secondary: #666666;
+            --text-muted: #888888;
+            --background: #ffffff;
+            --surface: #f8fafc;
+            --border: #e2e8f0;
+            --accent: #00d4aa;
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
-
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
             line-height: 1.6;
-            overflow-x: hidden;
+            color: var(--text-primary);
+            background: var(--background);
         }
-
-        /* Navigation */
-        .nav {
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(10, 10, 10, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            padding: 1rem 0;
+            transition: all 0.3s ease;
         }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 2rem;
+            padding: 1rem 0;
         }
-
+        
         .logo {
             font-size: 1.5rem;
             font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--primary);
+            text-decoration: none;
         }
-
+        
         .nav-links {
             display: flex;
             list-style: none;
             gap: 2rem;
         }
-
+        
         .nav-links a {
-            color: var(--text-secondary);
             text-decoration: none;
+            color: var(--text-secondary);
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
         }
-
+        
         .nav-links a:hover {
             color: var(--primary);
         }
-
+        
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -98,585 +93,623 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--gradient);
+            background: var(--primary);
             transition: width 0.3s ease;
         }
-
+        
         .nav-links a:hover::after {
             width: 100%;
         }
-
+        
         /* Hero Section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             position: relative;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 102, 255, 0.1), transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(124, 58, 237, 0.1), transparent 50%);
+            overflow: hidden;
         }
-
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 102, 255, 0.05) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
         .hero-content {
-            max-width: 800px;
-            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
         }
-
-        .hero-subtitle {
-            color: var(--secondary);
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
+        
         .hero-title {
             font-size: clamp(2.5rem, 5vw, 4rem);
             font-weight: 700;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--text-secondary));
+            margin-bottom: 1rem;
+            background: var(--gradient);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-
-        .hero-description {
-            font-size: 1.2rem;
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
             color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 400;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
             margin-bottom: 2.5rem;
             line-height: 1.7;
         }
-
-        .hero-cta {
+        
+        .cta-buttons {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
         }
-
+        
         .btn {
-            padding: 0.8rem 2rem;
+            padding: 0.875rem 2rem;
             border: none;
             border-radius: 50px;
             font-weight: 600;
             text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             transition: all 0.3s ease;
+            font-size: 1rem;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
         }
-
+        
         .btn-primary {
-            background: var(--gradient);
+            background: var(--primary);
             color: white;
-            box-shadow: var(--shadow);
         }
-
+        
         .btn-primary:hover {
+            background: var(--primary-dark);
             transform: translateY(-2px);
-            box-shadow: 0 15px 50px rgba(0, 102, 255, 0.3);
+            box-shadow: 0 10px 25px rgba(0, 102, 255, 0.3);
         }
-
+        
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
             border: 2px solid var(--border);
         }
-
+        
         .btn-secondary:hover {
             border-color: var(--primary);
             color: var(--primary);
+            transform: translateY(-2px);
         }
-
-        /* Section Styles */
-        .section {
-            padding: 6rem 0;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding-left: 2rem;
-            padding-right: 2rem;
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
         }
-
+        
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
             text-align: center;
             margin-bottom: 3rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--text-primary);
         }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 4rem;
+            font-size: 1.1rem;
         }
-
-        .project-card {
-            background: var(--bg-card);
-            border-radius: 20px;
-            padding: 2rem;
+        
+        /* Experience */
+        .experience-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .project-card:hover {
+        
+        .experience-card:hover {
             transform: translateY(-5px);
-            box-shadow: var(--shadow);
-            border-color: var(--primary);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
-
-        .project-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .project-header {
+        
+        .experience-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
             margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-
-        .project-title {
+        
+        .experience-title {
             font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .experience-company {
+            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .experience-period {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            background: var(--surface);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tech-tag {
+            background: linear-gradient(135deg, var(--accent), #00b894);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .projects-list {
+            margin-top: 1.5rem;
+        }
+        
+        .project-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: var(--surface);
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .project-title {
             font-weight: 600;
             color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
-
-        .project-type {
-            background: rgba(0, 102, 255, 0.2);
-            color: var(--secondary);
-            padding: 0.25rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-
+        
         .project-description {
             color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
         }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tech-tag {
-            background: var(--bg-secondary);
-            color: var(--text-secondary);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
-
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .project-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .project-link:hover {
-            color: var(--secondary);
-        }
-
-        /* Skills Section */
-        .skills-container {
+        
+        /* Skills */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
-
+        
         .skill-category {
-            background: var(--bg-card);
+            background: white;
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 16px;
             border: 1px solid var(--border);
             text-align: center;
-        }
-
-        .skill-icon {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .skill-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        .skill-list {
-            color: var(--text-secondary);
-            line-height: 1.8;
-        }
-
-        /* Contact Section */
-        .contact-content {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .contact-description {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-
-        .contact-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        .contact-link {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            padding: 1rem 1.5rem;
-            background: var(--bg-card);
-            border-radius: 10px;
-            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
-
-        .contact-link:hover {
-            border-color: var(--primary);
-            color: var(--primary);
-            transform: translateY(-2px);
+        
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
-
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            border-top: 1px solid var(--border);
-            color: var(--text-muted);
-        }
-
-        /* Mobile Navigation */
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--text-primary);
+        
+        .skill-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.5rem;
-            cursor: pointer;
+            color: white;
         }
-
-        /* Responsive Design */
+        
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+        
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .skill-item {
+            background: var(--surface);
+            padding: 0.4rem 0.8rem;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+        
+        /* Contact */
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-primary);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Responsive */
         @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+            
             .nav-links {
                 display: none;
             }
-
-            .mobile-menu-btn {
-                display: block;
+            
+            .hero-title {
+                font-size: 2.5rem;
             }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
             }
-
-            .project-card {
-                margin: 0 1rem;
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
-
-            .hero-cta {
+            
+            .contact-info {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            .contact-links {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .skills-container {
-                grid-template-columns: 1fr;
             }
         }
-
+        
         /* Smooth scrolling */
         html {
             scroll-behavior: smooth;
         }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
+        
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
         }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-secondary);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-dark);
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">IKA</div>
+    <header>
+        <nav class="container">
+            <a href="#" class="logo">IKA</a>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
+        </nav>
+    </header>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <div class="hero-subtitle">Microservices Architect</div>
-            <h1 class="hero-title">Ira Kenner Anonuevo</h1>
-            <p class="hero-description">
-                Senior Java & .NET Developer specializing in scalable microservices architecture 
-                for government banking systems. Expert in building secure, compliant, and 
-                high-performance financial applications.
-            </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">View Projects</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="section">
-        <h2 class="section-title">Featured Projects</h2>
-        
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">Online Banking Platform</h3>
-                        <span class="project-type">Enterprise</span>
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <div class="hero-content fade-in">
+                    <h1 class="hero-title">Ira Kenner Añonuevo</h1>
+                    <p class="hero-subtitle">Senior Software Developer & Team Lead</p>
+                    <p class="hero-description">
+                        Proactive software professional with over 9 years of expertise in banking systems, microservices architecture, and full-stack development. Specialized in secure financial applications, API development, and system integration within government banking environments.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="#experience" class="btn btn-primary">View Experience</a>
+                        <a href="#contact" class="btn btn-secondary">Get in Touch</a>
                     </div>
                 </div>
-                <p class="project-description">
-                    Comprehensive microservices-based online banking platform built for government 
-                    financial institutions. Features secure account management, transaction processing, 
-                    and real-time fraud detection with full regulatory compliance.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">Java Spring Boot</span>
-                    <span class="tech-tag">ASP.NET Core</span>
-                    <span class="tech-tag">PostgreSQL</span>
-                    <span class="tech-tag">Redis</span>
-                    <span class="tech-tag">Docker</span>
-                    <span class="tech-tag">Kubernetes</span>
-                </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <i class="fab fa-github"></i> Source Code
-                    </a>
-                    <a href="#" class="project-link">
-                        <i class="fas fa-external-link-alt"></i> Live Demo
-                    </a>
-                </div>
             </div>
+        </section>
 
-            <div class="project-card">
-                <div class="project-header">
-                    <div>
-                        <h3 class="project-title">InstaPay ISO 20022</h3>
-                        <span class="project-type">Payment System</span>
+        <section id="experience">
+            <div class="container">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Building secure, scalable banking solutions with cutting-edge technology</p>
+
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Team Lead Programmer (E-Channel)</h3>
+                            <p class="experience-company">Development Bank of the Philippines</p>
+                        </div>
+                        <span class="experience-period">2021 - Present</span>
+                    </div>
+                    
+                    <div class="tech-stack">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Spring Boot</span>
+                        <span class="tech-tag">Spring WebFlux</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">ASP.NET Core</span>
+                        <span class="tech-tag">ReactJS</span>
+                        <span class="tech-tag">SQL Server</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">Oracle</span>
+                        <span class="tech-tag">JWT</span>
+                    </div>
+
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-title">DBP InstaPay ISO 20022 Compliance</div>
+                            <div class="project-description">Aligned with BSP Circular 1195, enabled real-time electronic fund transfers through ISO-compliant messaging using Java Spring Boot and MySQL.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">DBP GSIS Electronic Payment System</div>
+                            <div class="project-description">Full-stack development of secure payment system for government contributions and loans using ReactJS, .NET Core, and MySQL.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">DBP ONE (Online Banking Platform)</div>
+                            <div class="project-description">Comprehensive online banking features including balance inquiry, fund transfer, bills payment, and transaction history using .NET MVC.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Microservices API Suite</div>
+                            <div class="project-description">Developed multiple APIs: Authenticator (QR-based 2FA), Identity (JWT authentication), Limits, NIDSS, DB2 integration, and CardMS using .NET Core with various databases.</div>
+                        </div>
                     </div>
                 </div>
-                <p class="project-description">
-                    Real-time payment processing system implementing ISO 20022 messaging standards 
-                    for instant payments. Handles high-volume transactions with sub-second processing 
-                    times and comprehensive audit trails for regulatory compliance.
-                </p>
-                <div class="project-tech">
-                    <span class="tech-tag">.NET 8</span>
-                    <span class="tech-tag">Apache Kafka</span>
-                    <span class="tech-tag">MongoDB</span>
-                    <span class="tech-tag">RabbitMQ</span>
-                    <span class="tech-tag">Azure Service Bus</span>
-                    <span class="tech-tag">ISO 20022</span>
+
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Programmer / System Analyst</h3>
+                            <p class="experience-company">Development Bank of the Philippines</p>
+                        </div>
+                        <span class="experience-period">2019 - 2021</span>
+                    </div>
+                    
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-title">ATM Switch & Card Management Unification</div>
+                            <div class="project-description">Led integration project combining ATM switching systems with card management infrastructure.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">ATM Branding Agreement - Seven Bank Ltd.</div>
+                            <div class="project-description">Implemented international ATM network integration and branding compliance.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">1K POS Project</div>
+                            <div class="project-description">Deployed point-of-sale integration with Apollo Technologies Inc.</div>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-links">
-                    <a href="#" class="project-link">
-                        <i class="fab fa-github"></i> Source Code
+
+                <div class="experience-card fade-in">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Software Quality Assurance Analyst</h3>
+                            <p class="experience-company">Development Bank of the Philippines</p>
+                        </div>
+                        <span class="experience-period">2016 - 2019</span>
+                    </div>
+                    
+                    <div class="projects-list">
+                        <div class="project-item">
+                            <div class="project-title">End-to-End SQA for Banking Applications</div>
+                            <div class="project-description">Ensured compliance with functional, regulatory, and internal control requirements for branch banking systems.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">BankWorks Card Management System</div>
+                            <div class="project-description">Quality assurance for RS2 Philippines card management platform.</div>
+                        </div>
+                        <div class="project-item">
+                            <div class="project-title">Integrated Core Banking Solution (ICBS)</div>
+                            <div class="project-description">Testing and deployment support for Polaris banking core system across multiple branch locations.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Comprehensive skill set spanning backend development, system integration, and quality assurance</p>
+                
+                <div class="skills-grid">
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">💻</div>
+                        <h3>Backend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Java</span>
+                            <span class="skill-item">Spring Boot</span>
+                            <span class="skill-item">Spring WebFlux</span>
+                            <span class="skill-item">C#</span>
+                            <span class="skill-item">ASP.NET Core</span>
+                            <span class="skill-item">ASP.NET MVC</span>
+                            <span class="skill-item">Web API</span>
+                            <span class="skill-item">WCF</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">🗄️</div>
+                        <h3>Database & ORM</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">SQL Server</span>
+                            <span class="skill-item">MySQL</span>
+                            <span class="skill-item">Oracle</span>
+                            <span class="skill-item">DB2</span>
+                            <span class="skill-item">Entity Framework</span>
+                            <span class="skill-item">Dapper</span>
+                            <span class="skill-item">SSRS</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">🌐</div>
+                        <h3>Frontend Development</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">ReactJS</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">jQuery</span>
+                            <span class="skill-item">Bootstrap</span>
+                            <span class="skill-item">ASP.NET Razor</span>
+                            <span class="skill-item">HTML5</span>
+                            <span class="skill-item">CSS3</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">🔐</div>
+                        <h3>Security & Integration</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">JWT</span>
+                            <span class="skill-item">OAuth</span>
+                            <span class="skill-item">2FA/QR Authentication</span>
+                            <span class="skill-item">API Security</span>
+                            <span class="skill-item">Banking Compliance</span>
+                            <span class="skill-item">ISO 20022</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">🏦</div>
+                        <h3>Banking Systems</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">InstaPay</span>
+                            <span class="skill-item">ATM Systems</span>
+                            <span class="skill-item">Card Management</span>
+                            <span class="skill-item">Core Banking</span>
+                            <span class="skill-item">Payment Processing</span>
+                            <span class="skill-item">Postilion</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category fade-in">
+                        <div class="skill-icon">🔧</div>
+                        <h3>Tools & Practices</h3>
+                        <div class="skill-list">
+                            <span class="skill-item">Serilog</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">Agile/Scrum</span>
+                            <span class="skill-item">Software QA</span>
+                            <span class="skill-item">System Analysis</span>
+                            <span class="skill-item">DevOps</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Ready to discuss your next banking technology project or career opportunities</p>
+                
+                <div class="contact-info">
+                    <a href="mailto:anonuevo.ira@gmail.com" class="contact-item fade-in">
+                        <div class="contact-icon">✉️</div>
+                        <div>
+                            <h3>Email</h3>
+                            <p>anonuevo.ira@gmail.com</p>
+                        </div>
                     </a>
-                    <a href="#" class="project-link">
-                        <i class="fas fa-chart-line"></i> Performance Metrics
+                    
+                    <a href="https://www.linkedin.com/in/iraanonuevo/" target="_blank" rel="noopener noreferrer" class="contact-item fade-in">
+                        <div class="contact-icon">💼</div>
+                        <div>
+                            <h3>LinkedIn</h3>
+                            <p>Connect with me</p>
+                        </div>
                     </a>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Ira Kenner Añonuevo. All rights reserved.</p>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <h2 class="section-title">Technical Expertise</h2>
-        
-        <div class="skills-container">
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fab fa-java"></i>
-                </div>
-                <h3 class="skill-title">Java Ecosystem</h3>
-                <div class="skill-list">
-                    Spring Boot, Spring Cloud<br>
-                    Hibernate, JPA<br>
-                    Maven, Gradle<br>
-                    JUnit, Mockito
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fab fa-microsoft"></i>
-                </div>
-                <h3 class="skill-title">.NET Platform</h3>
-                <div class="skill-list">
-                    ASP.NET Core, Web API<br>
-                    Entity Framework<br>
-                    C#, F#<br>
-                    xUnit, NUnit
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fas fa-cube"></i>
-                </div>
-                <h3 class="skill-title">Microservices</h3>
-                <div class="skill-list">
-                    Event-Driven Architecture<br>
-                    CQRS, Event Sourcing<br>
-                    API Gateway Patterns<br>
-                    Circuit Breaker, Saga
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fas fa-database"></i>
-                </div>
-                <h3 class="skill-title">Data & Messaging</h3>
-                <div class="skill-list">
-                    PostgreSQL, MongoDB<br>
-                    Apache Kafka, RabbitMQ<br>
-                    Redis, Elasticsearch<br>
-                    SQL Server, Oracle
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fab fa-docker"></i>
-                </div>
-                <h3 class="skill-title">DevOps & Cloud</h3>
-                <div class="skill-list">
-                    Docker, Kubernetes<br>
-                    Azure, AWS<br>
-                    Jenkins, GitHub Actions<br>
-                    Terraform, Helm
-                </div>
-            </div>
-
-            <div class="skill-category">
-                <div class="skill-icon">
-                    <i class="fas fa-shield-alt"></i>
-                </div>
-                <h3 class="skill-title">Security & Compliance</h3>
-                <div class="skill-list">
-                    OAuth2, JWT<br>
-                    PCI DSS, SOX<br>
-                    GDPR Compliance<br>
-                    Penetration Testing
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section">
-        <h2 class="section-title">Let's Connect</h2>
-        
-        <div class="contact-content">
-            <p class="contact-description">
-                Interested in discussing microservices architecture, government banking solutions, 
-                or potential collaboration opportunities? I'd love to hear from you.
-            </p>
-            
-            <div class="contact-links">
-                <a href="mailto:ira.anonuevo@email.com" class="contact-link">
-                    <i class="fas fa-envelope"></i>
-                    Email
-                </a>
-                <a href="https://linkedin.com/in/ira-anonuevo" class="contact-link">
-                    <i class="fab fa-linkedin"></i>
-                    LinkedIn
-                </a>
-                <a href="https://github.com/ira-anonuevo" class="contact-link">
-                    <i class="fab fa-github"></i>
-                    GitHub
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <p>&copy; 2025 Ira Kenner Anonuevo. Built with modern web technologies.</p>
     </footer>
 
     <script>
@@ -694,39 +727,19 @@
             });
         });
 
-        // Active navigation highlighting
+        // Header background on scroll
         window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.nav-links a');
-            
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 100;
-                const sectionHeight = section.offsetHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-
-        // Add scroll effect to navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 50) {
-                nav.style.background = 'rgba(10, 10, 10, 0.98)';
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
             } else {
-                nav.style.background = 'rgba(10, 10, 10, 0.95)';
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
             }
         });
 
-        // Intersection Observer for animations
+        // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -735,18 +748,20 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
                 }
             });
         }, observerOptions);
 
-        // Observe project cards and skill categories
-        document.querySelectorAll('.project-card, .skill-category').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
             observer.observe(el);
+        });
+
+        // Add loading animation to page
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
         });
     </script>
 </body>
